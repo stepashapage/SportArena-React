@@ -1,0 +1,577 @@
+@mixin font-ExtraBold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(24px, 1.5vw, 32px);
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #273461;
+}
+
+@mixin font-Bold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(18px, 1.1vw, 24px);
+    font-weight: 600;
+    line-height: 2.25rem;
+    color: #273461;
+}
+
+@mixin font-Regular__1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(16px, 0.93vw, 20px);
+    font-weight: 500;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(14px, 0.78vw, 16px);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #273461;
+}
+
+.header {
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.header-container {
+    max-width: 100rem;
+    padding: 0 100px;
+    margin: 0 auto;
+    transition: padding 0.3s ease;
+}
+
+.header-container.shrink {
+    padding: 0 25px;
+    transition: padding 0.3s ease;
+}
+
+// .header-container.header-container__animation {
+//     max-width: 110rem;
+//     padding: 0 100px;
+//     margin: 0 auto;
+
+// }
+
+.header-container__wrapper {
+    display: flex;
+    flex-direction: column;
+    filter: drop-shadow(0 0 1.5625rem rgba(155, 193, 215, 0.55));
+    //
+}
+
+.header-container__wrapper-height {
+    height: 70px;
+}
+
+.header-container__wrapper-white {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #edf6fc;
+    padding: 0 2vw;
+}
+
+.while-flex__Catalog {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 2vw;
+}
+
+.catalog-item__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+}
+
+.catalog-item__list:first-child {
+    position: relative;
+}
+
+.header-container__wrapper-black {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #222222;
+    border-radius: 0 0 20px 20px;
+}
+
+.black-flex {
+    width: 90%;
+    box-sizing: border-box;
+    ul {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2vw;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+
+        li {
+            flex: 0 0 auto;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+}
+
+.while-flex__Logo {
+    @include font-ExtraBold();
+    color: #273461;
+    position: relative;
+    cursor: pointer;
+
+    strong {
+        color: #000;
+    }
+
+    &::before {
+        content: "Арена";
+        @include font-Regular__2();
+        color: #273461;
+        position: absolute;
+        top: -15%;
+        right: -50%;
+    }
+}
+
+.catalog-item__list {
+    @include font-Regular__1();
+}
+
+.black-flex__catalog a {
+    @include font-Regular__1();
+    color: #fff;
+}
+
+.header-container__template {
+    position: absolute;
+    top: -50%;
+    left: 0%;
+    opacity: 0;
+    visibility: hidden;
+
+    .template-item a {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .template-item__link {
+        @include font-Regular__2();
+        color: #000;
+    }
+
+    .template-item__link-svg {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+.catalog-item:first-child {
+    position: relative;
+}
+
+.header-container__template.active {
+    width: 20rem;
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    position: absolute;
+    transform: translateY(50%);
+    transition: transform ease-in-out 0.5s;
+    background-color: #fff;
+    opacity: 1;
+    visibility: visible;
+    filter: drop-shadow(0 0 1.5625rem rgba(155, 193, 215, 0.55));
+
+    a {
+        margin: 5px 1vw;
+    }
+}
+
+.template-item:hover {
+    background-color: #0194d8;
+    border-radius: 10px;
+    transition: all 0.5s;
+}
+
+.while-flex__Logo:hover {
+    @include font-ExtraBold();
+    position: relative;
+    color: #0194d8;
+    transition: all 0.5s;
+
+    strong {
+        color: #000;
+    }
+
+    &::before {
+        content: "Арена";
+        @include font-Regular__2();
+        color: #0194d8;
+        position: absolute;
+        top: -15%;
+        right: -50%;
+    }
+}
+
+.catalog-item__list:hover {
+    @include font-Regular__1();
+    color: #0194d8;
+    transition: all 0.5s;
+}
+
+.black-flex__catalog a:hover {
+    @include font-Regular__1();
+    color: #0194d8;
+    transition: all 0.5s;
+}
+
+@media (width < 770px) {
+    .header-container {
+        max-width: 150rem;
+        padding: 0 40px;
+        margin: 0 auto;
+    }
+
+    .header-container__wrapper-white {
+        display: flex;
+        flex-direction: column;
+        align-items: normal;
+        padding: 0vw 2vw;
+    }
+
+    .while-flex__Logo {
+        &::before {
+            content: "";
+        }
+    }
+}
+
+@media (width < 470px) {
+    .header-container__wrapper-white {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 1vw 4vw;
+    }
+
+    .catalog-item__list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 2vw;
+    }
+
+    .while-flex__Catalog .catalog-item:not(:first-child) {
+        display: none;
+    }
+
+    .while-flex__Catalog .catalog-item:nth-child(3n) {
+        display: block;
+    }
+
+    .header-container {
+        max-width: 100%;
+        padding: 0 0;
+        margin: 0 auto;
+    }
+}
+
+@media (width < 1150px) {
+    .header-container__template.active {
+        width: 25vw;
+    }
+}
+
+@media (width < 700px) {
+    .header-container__template.active {
+        width: 40vw;
+        transform: translateY(35%);
+    }
+}
+
+@media (width < 470px) {
+    .header-container__template.active {
+        width: 15rem;
+        transform: translateY(50%);
+        left: -60%;
+    }
+}
+
+/* registr menu */
+
+.registrMenu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 99998;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.registrMenu__Modal {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
+    z-index: 1;
+    border-radius: 25px;
+    padding: 0 25px;
+    position: relative;
+    transform: translateY(-50px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.registrMenu__Modal-close {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    border: 0;
+    border-radius: 50%;
+    padding: 1rem;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    background: linear-gradient(0.38turn, #c9c9c9, #ffffff);
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.registrMenu__Modal-SignIn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    justify-content: center;
+    border-radius: 25px 0 0 25px;
+    background-color: #fff;
+    padding: 2rem;
+
+    .SignIn-title {
+        @include font-ExtraBold();
+        font-weight: 800;
+        color: #000;
+        text-align: center;
+    }
+
+    .SignIn-Social {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 1.5rem;
+
+        .Social_cont-btn {
+            border: 0;
+            border-radius: 50%;
+            padding: 1rem;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            background: linear-gradient(0.38turn, #c9c9c9, #ffffff);
+
+            &:hover {
+                box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.15);
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    .SignIn-formReg {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        gap: 1.5rem;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            border: 0;
+            box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            background: linear-gradient(0.38turn, #c9c9c9, #ffffff);
+            padding: 1rem;
+            width: calc(100% - 2rem);
+            border-radius: 10px;
+            @include font-Regular__2();
+
+            &:hover {
+                box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        button {
+            border: 0;
+            box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            background: linear-gradient(0.38turn, #c9c9c9, #ffffff);
+            padding: 0.75rem 2rem;
+            border-radius: 10px;
+            @include font-Regular__2();
+
+            &:hover {
+                box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.15);
+            }
+        }
+    }
+
+    .SignIn-forget {
+        text-align: center;
+
+        a {
+            @include font-Regular__2();
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color: #000;
+                position: absolute;
+                left: 0%;
+                bottom: -10%;
+                transform: scale(0);
+                transition: transform 1s;
+                transform-origin: right;
+            }
+
+            &:hover::before {
+                transform: scale(1);
+                transition: transform 1s;
+                transform-origin: left;
+            }
+        }
+    }
+}
+
+.registrMenu__Modal-SignUp {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    justify-content: center;
+    background-color: #0194d8;
+    border-radius: 0 25px 25px 0;
+    padding: 2rem;
+
+    .SignUp-title {
+        @include font-ExtraBold();
+        font-weight: 800;
+        color: #000;
+        text-align: center;
+        line-height: 1.5rem;
+        font-size: clamp(24px, 1.5vw, 32px);
+    }
+
+    .SignUp-btnRegistr {
+        border: 0;
+        box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.15);
+        cursor: pointer;
+        background: linear-gradient(0.38turn, #c9c9c9, #ffffff);
+        padding: 0.75rem 2rem;
+        border-radius: 10px;
+        @include font-Regular__2();
+
+        &:hover {
+            box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    .SignIn-desc {
+        text-align: center;
+
+        a {
+            @include font-Regular__2();
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color: #000;
+                position: absolute;
+                left: 0%;
+                bottom: -10%;
+                transform: scale(0);
+                transition: transform 1s;
+                transform-origin: right;
+            }
+
+            &:hover::before {
+                transform: scale(1);
+                transition: transform 1s;
+                transform-origin: left;
+            }
+        }
+    }
+
+    .SignUp-formReg {
+        text-align: center;
+    }
+}
+
+@media (width < 675px) {
+    .registrMenu__Modal {
+        grid-template-columns: 1fr;
+    }
+
+    .registrMenu__Modal-SignIn {
+        border-radius: 25px 25px 0 0;
+    }
+
+    .registrMenu__Modal-SignUp {
+        border-radius: 0 0 25px 25px;
+    }
+}
+
+.registrMenu--entering,
+.registrMenu--entered {
+    opacity: 1;
+}
+
+.registrMenu--entering .registrMenu__Modal,
+.registrMenu--entered .registrMenu__Modal {
+    transform: translateY(0);
+}
+
+.registrMenu--exiting,
+.registrMenu--exited {
+    opacity: 0;
+}
+
+.registrMenu--exiting .registrMenu__Modal,
+.registrMenu--exited .registrMenu__Modal {
+    transform: translateY(-50px);
+}
