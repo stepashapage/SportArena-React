@@ -1,0 +1,164 @@
+@mixin font-ExtraBold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(24px, 1.5vw, 32px);
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #273461;
+}
+
+@mixin font-Bold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(18px, 1.1vw, 24px);
+    font-weight: 600;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(16px, 0.93vw, 20px);
+    font-weight: 500;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(14px, 0.78vw, 16px);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #273461;
+}
+
+.main {
+    width: 100%;
+}
+
+.section-container {
+    max-width: 100rem;
+    padding: 5rem 100px 0 100px;
+    margin: 0 auto;
+}
+
+@media (width < 1200px) {
+    .section-container {
+        padding: 5rem 100px 0 100px;
+    }
+}
+
+@media (width < 770px) {
+    .section-container {
+        max-width: 150rem;
+        padding: 5rem 40px 0 40px;
+        margin: 0 auto;
+    }
+}
+
+@media (width < 470px) {
+    .section-container {
+        max-width: 100%;
+        padding: 5rem 10px 0 10px;
+        margin: 0 auto;
+    }
+}
+
+.section1-container__movie {
+    padding-top: 11rem;
+}
+
+.movie-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    max-width: unset;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: 50% 50%;
+    object-position: 50% 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.movie-container1 {
+    z-index: 3;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 5vw;
+    align-items: center;
+    padding-top: 10rem;
+}
+
+.movie-container__menu1 {
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: column;
+    width: 34.5rem;
+    height: 17.8125rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+}
+
+.menu-flex__Logo1 {
+    @include font-ExtraBold();
+    font-size: clamp(24px, 2vw, 48px);
+    color: #006f7c;
+    position: relative;
+    cursor: pointer;
+
+    strong {
+        color: #249968;
+    }
+
+    &::before {
+        content: "Арена";
+        @include font-Regular__2();
+        color: #006f7c;
+        position: absolute;
+        top: -15%;
+        right: -50%;
+    }
+}
+
+.menu-ivents1 {
+    h1 {
+        @include font-ExtraBold();
+        font-size: clamp(24px, 1.55vw, 48px);
+        color: #fff;
+        text-align: center;
+    }
+}
+
+@media (width < 1200px) {
+    .movie-container1 {
+        gap: 5vw;
+        padding-top: 0rem;
+    }
+}
+
+@media (width < 770px) {
+    .movie-container1 {
+        gap: 5vw;
+        padding-top: 5rem;
+    }
+
+    .movie-container__menu1 {
+        width: 70vw;
+        height: 15.8125rem;
+    }
+    .movie-container__menu1 {
+        gap: 5vw;
+    }
+}
+
+@media (width < 470px) {
+    .movie-container {
+        gap: 10vw;
+        padding-top: 5rem;
+    }
+}

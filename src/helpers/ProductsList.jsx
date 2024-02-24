@@ -119,3 +119,81 @@ export const academy = [
         title: "Развитая партнерская сеть",
     },
 ];
+
+import ChildArena1 from "../img/img_ChildArena/2-main/section-4/Main/Батутная арена.svg";
+import ChildArena2 from "../img/img_ChildArena/2-main/section-4/Main/Нерф арена.svg";
+import ChildArena3 from "../img/img_ChildArena/2-main/section-4/Main/4х уровневый лабиринт.svg";
+import ChildArena4 from "../img/img_ChildArena/2-main/section-4/Main/Бассейн с шариками.svg";
+import ChildArena5 from "../img/img_ChildArena/2-main/section-4/Main/Веревочный парк.svg";
+import ChildArena6 from "../img/img_ChildArena/2-main/section-4/Main/Игровые домики.svg";
+import ChildArena7 from "../img/img_ChildArena/2-main/section-4/Main/Красочные сети.svg";
+import ChildArena8 from "../img/img_ChildArena/2-main/section-4/Main/Прохождения препятствий.svg";
+import ChildArena9 from "../img/img_ChildArena/2-main/section-4/Main/Прыжок веры.svg";
+import ChildArena10 from "../img/img_ChildArena/2-main/section-4/Main/Скаладром.svg";
+
+export const ChildArenaGame = [
+    {
+        img: ChildArena1,
+        Name: "Батутная арена",
+    },
+    {
+        img: ChildArena2,
+        Name: "Нерф арена",
+    },
+    {
+        img: ChildArena3,
+        Name: "4х уровневый лабиринт",
+    },
+    {
+        img: ChildArena4,
+        Name: "Бассейн с шариками",
+    },
+    {
+        img: ChildArena5,
+        Name: "Веревочный парк",
+    },
+    {
+        img: ChildArena6,
+        Name: "Игровые домики",
+    },
+    {
+        img: ChildArena7,
+        Name: "Красочные сети",
+    },
+    {
+        img: ChildArena8,
+        Name: "Прохождения препятствий",
+    },
+    {
+        img: ChildArena9,
+        Name: "Прыжок веры",
+    },
+    {
+        img: ChildArena10,
+        Name: "Скаладром",
+    },
+];
+
+import imgFood1 from "../img/img_ChildArena/2-main/section-4/Rectangle 10.svg";
+import imgFood2 from "../img/img_ChildArena/2-main/section-4/Rectangle 10-1.svg";
+import imgFood3 from "../img/img_ChildArena/2-main/section-4/Rectangle 10-2.svg";
+
+import imgNext from "../img/img_ChildArena/2-main/section-2/Next svg.svg";
+
+export const enterainmentFood = [
+    {
+        title: "Небо",
+        img: imgFood1,
+        Nextimg: imgNext,
+    },
+    {
+        title: "Бизнес-ланчи",
+        img: imgFood2,
+        Nextimg: imgNext,
+    },
+    {
+        title: "Банкетные залы",
+        img: imgFood3,
+        Nextimg: imgNext,
+    },
+];

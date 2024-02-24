@@ -69,17 +69,17 @@ const tempMenu = [
     {
         Name: "Vivi Fuel Arena",
         img: Right,
-        path: <Home />,
+        path: "/",
     },
     {
         Name: "Vivi Fuel Children`s Arena",
         img: Right,
-        path: <ChildArena />,
+        path: "/ChidrenArena",
     },
     {
         Name: "Vivi Fuel Sport Food",
         img: Right,
-        path: <Food />,
+        path: "/Food",
     },
 ];
 
