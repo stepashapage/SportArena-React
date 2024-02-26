@@ -1,0 +1,80 @@
+@mixin font-ExtraBold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(24px, 1.5vw, 32px);
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #273461;
+}
+
+@mixin font-Bold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(18px, 1.1vw, 24px);
+    font-weight: 600;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(16px, 0.93vw, 20px);
+    font-weight: 500;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(14px, 0.78vw, 16px);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #273461;
+}
+
+.section-container__cat {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2vw;
+}
+
+.cat-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.cat-container__template {
+    border: 1px solid rgba(32, 32, 32, 0.25);
+    background-color: #fff;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform ease-in-out 1s;
+    z-index: 1;
+}
+
+.cat-container__template-layer {
+    padding: 2vw 1vw 2vw 1vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    @include font-Bold();
+    color: #273461;
+    gap: 2vw;
+
+    h1 {
+        text-align: center;
+    }
+}
+
+.cat-container__template:hover {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+@media (width < 700px) {
+    .cat-container {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

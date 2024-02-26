@@ -1,0 +1,11 @@
+.section-container__Map {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 2vw;
+}
+
+.map {
+    width: 100%;
+    height: 500px;
+}

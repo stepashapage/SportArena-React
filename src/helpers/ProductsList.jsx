@@ -197,3 +197,117 @@ export const enterainmentFood = [
         Nextimg: imgNext,
     },
 ];
+
+import imgProduct1 from "../img/img_FoodForArena/2-main/section-2/Main/1.svg";
+import imgProduct2 from "../img/img_FoodForArena/2-main/section-2/Main/2.svg";
+import imgProduct3 from "../img/img_FoodForArena/2-main/section-2/Main/3.svg";
+import imgProduct4 from "../img/img_FoodForArena/2-main/section-2/Main/4.svg";
+import imgProduct5 from "../img/img_FoodForArena/2-main/section-2/Main/5.svg";
+import imgProduct6 from "../img/img_FoodForArena/2-main/section-2/Main/6.svg";
+import imgProduct7 from "../img/img_FoodForArena/2-main/section-2/Main/7.svg";
+import imgProduct8 from "../img/img_FoodForArena/2-main/section-2/Main/8.svg";
+import imgProduct9 from "../img/img_FoodForArena/2-main/section-2/Main/9.svg";
+import imgProduct91 from "../img/img_FoodForArena/2-main/section-2/Main/91.svg";
+import imgProduct92 from "../img/img_FoodForArena/2-main/section-2/Main/92.svg";
+import imgProduct93 from "../img/img_FoodForArena/2-main/section-2/Main/93.svg";
+
+import Star from "../img/img_FoodForArena/2-main/section-2/StarReating.svg";
+
+export const ProductSlides = [
+    {
+        ImgProduct: imgProduct1,
+        Name: "Протеиновый напиток SAN NINANIUM WHEY 448 гр",
+        price: "1 510 ₽",
+        OldPrice: "1 750 ₽",
+        ImgStar: Star,
+        discount: "-22%",
+    },
+    {
+        ImgProduct: imgProduct2,
+        Name: "Аминокислоты Xtend Scivation Xtend BCAAs 376 - 420 г",
+        price: "3 181 ₽",
+        OldPrice: "3 975 ₽",
+        ImgStar: Star,
+        discount: "-20%",
+    },
+    {
+        ImgProduct: imgProduct3,
+        Name: "Vitamin C Plus Calcium Ultimate Nutrition 60 капсул",
+        price: "1 230 ₽",
+        OldPrice: "1 410 ₽",
+        ImgStar: Star,
+        discount: "-10%",
+    },
+    {
+        ImgProduct: imgProduct4,
+        Name: "Протеиновый напиток QNT Whey Protein Digest 500г",
+        price: "2 460 ₽",
+        OldPrice: "1 750 ₽",
+        ImgStar: Star,
+        discount: "-35%",
+    },
+    {
+        ImgProduct: imgProduct5,
+        Name: "Изотоник VPLAB FIT ACTIVE + L-CARNITINE 500 ГР",
+        price: "1 750 ₽",
+        OldPrice: "3 500 ₽",
+        ImgStar: Star,
+        discount: "-50%",
+    },
+    {
+        ImgProduct: imgProduct6,
+        Name: "PUREPROTEIN PROTEIN COOKIES 35% PROTEIN 80 ГР",
+        price: "1 240 ₽",
+        OldPrice: "1 400 ₽",
+        ImgStar: Star,
+        discount: "-5%",
+    },
+    {
+        ImgProduct: imgProduct7,
+        Name: "Аминокислоты BCAAs Rule One Proteins R1 BCAA 216 г",
+        price: "1 620 ₽",
+        OldPrice: "1 975 ₽",
+        ImgStar: Star,
+        discount: "-20%",
+    },
+    {
+        ImgProduct: imgProduct8,
+        Name: "Аминокислоты BCAAs RPS Nutrition BCAA++ 500 г",
+        price: "1 970 ₽",
+        OldPrice: "2 100 ₽",
+        ImgStar: Star,
+        discount: "-5%",
+    },
+    {
+        ImgProduct: imgProduct9,
+        Name: "Аминокислоты BCAAs Scivation Xtend BCAAs 1125-1291 г",
+        price: "7 811 ₽",
+        OldPrice: "9 763 ₽",
+        ImgStar: Star,
+        discount: "-20%",
+    },
+    {
+        ImgProduct: imgProduct91,
+        Name: "Аминокислоты BCAAs Hardlabz BCAA Blast 300 г",
+        price: "1 790 ₽",
+        OldPrice: "2 990 ₽",
+        ImgStar: Star,
+        discount: "-45%",
+    },
+    {
+        ImgProduct: imgProduct92,
+        Name: "Аминокислоты BCAAs Scivation Xtend BCAAs 376 - 420 г",
+        price: "3 181 ₽",
+        OldPrice: "3 975 ₽",
+        ImgStar: Star,
+        discount: "-20%",
+    },
+    {
+        ImgProduct: imgProduct93,
+        Name: "Аминокислоты Quamtrax Nutrition BCAA Powder 500 г",
+        price: "3 020  ₽",
+        OldPrice: "3 750 ₽",
+        ImgStar: Star,
+        discount: "-35%",
+    },
+];
