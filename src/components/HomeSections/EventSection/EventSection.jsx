@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { eventTickets } from "../../../helpers/ProductsList";
 import "./EventSection.scss";
 
@@ -6,7 +6,20 @@ import videoBg from "../../../img/img_SportArena/2-main/section-1/Backgraund-VTB
 import left from "../../../img/img_SportArena/2-main/section-1/Main/Left-svg.svg";
 import right from "../../../img/img_SportArena/2-main/section-1/Main/Right-svg.svg";
 
-import Ticket from "../../../pages/Ticket/Ticket";
+export const IventItems = [
+    {
+        name: "Спорт",
+        path: "/Shop",
+    },
+    {
+        name: "Концерт",
+        path: "/Shop",
+    },
+    {
+        name: "Шоу",
+        path: "/Shop",
+    },
+];
 
 export default function EventSection() {
     return (
@@ -46,22 +59,25 @@ export default function EventSection() {
                             </div>
 
                             <div className="menu-ivents menu-ivents-full">
-                                <div className="menu-ivents__link">
-                                    <a href="./Arena-Shop/Shop.html">Спорт</a>
-                                </div>
-                                <div className="menu-ivents__link">
-                                    <a href="./Arena-Shop/Shop.html">Концерт</a>
-                                </div>
-                                <div className="menu-ivents__link">
-                                    <a href="./Arena-Shop/Shop.html">Шоу</a>
-                                </div>
+                                {IventItems.map((IventItem, i) => {
+                                    return (
+                                        <div
+                                            className="menu-ivents__link"
+                                            key={i}
+                                        >
+                                            <Link to={IventItem.path}>
+                                                {IventItem.name}
+                                            </Link>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
                         <div className="movie-container__ticket">
                             {eventTickets.map((eventTicket, i) => {
                                 return (
-                                    <Link
-                                        // to={<Ticket />} // Карточка билета с универсальным id
+                                    <NavLink
+                                        to={`/Poster/${i}`}
                                         className="ticket-layer"
                                         key={i}
                                     >
@@ -75,7 +91,7 @@ export default function EventSection() {
                                         <div className="ticket-layer__Buy">
                                             <p>Купить билет</p>
                                         </div>
-                                    </Link>
+                                    </NavLink>
                                 );
                             })}
                         </div>

@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
 import "./styles/reset.css";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
@@ -8,7 +8,7 @@ import Home from "./pages/Home/Home";
 import ChildArena from "./pages/ChildArena/ChildArena";
 import Food from "./pages/Food/Food";
 import Poster from "./pages/Poster/Poster";
-import Ticket from "./pages/Ticket/Ticket";
+import Shop from "./pages/Shop/Shop";
 
 export default function App() {
     return (
@@ -23,7 +23,7 @@ export default function App() {
 
                     <Route path="/Poster/:id" element={<Poster />} />
 
-                    <Route path="/Ticket" element={<Ticket />} />
+                    <Route path="/Shop" element={<Shop />} />
                 </Routes>
 
                 <Footer />

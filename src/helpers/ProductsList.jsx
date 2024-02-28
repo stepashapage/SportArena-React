@@ -311,3 +311,129 @@ export const ProductSlides = [
         discount: "-35%",
     },
 ];
+
+import imgSport1 from "../img/img_ArenaShop/Спорт/UFC GYM.png";
+import imgSport2 from "../img/img_ArenaShop/Спорт/Way2Fit.jpg";
+import imgSport3 from "../img/img_ArenaShop/Спорт/Сайкл-студия VELOBEAT.jpeg";
+import imgSport4 from "../img/img_ArenaShop/Спорт/Сплав.jpg";
+import imgSport5 from "../img/img_ArenaShop/Спорт/СпортDeпо.jpg";
+
+import imgShop1 from "../img/img_ArenaShop/Магазины/Intimissimi.jpg";
+import imgShop2 from "../img/img_ArenaShop/Магазины/Realboxing.jpg";
+import imgShop3 from "../img/img_ArenaShop/Магазины/Айкрафт Оптика.jpg";
+import imgShop4 from "../img/img_ArenaShop/Магазины/Мармеладный капитан.jpg";
+import imgShop5 from "../img/img_ArenaShop/Магазины/Перекресток.png";
+
+import imgRestaurant1 from "../img/img_ArenaShop/Рестораны/Вахтанг.jpg";
+import imgRestaurant2 from "../img/img_ArenaShop/Рестораны/Дагестанская лавка.jpg";
+import imgRestaurant3 from "../img/img_ArenaShop/Рестораны/Крошка картошка.jpg";
+import imgRestaurant4 from "../img/img_ArenaShop/Рестораны/Кухня Кипра.jpg";
+
+import imgChild1 from "../img/img_ArenaShop/Для детей/Baby Gym.jpg";
+import imgChild2 from "../img/img_ArenaShop/Для детей/Детский мир.png";
+import imgChild3 from "../img/img_ArenaShop/Для детей/Детский центр.jpg";
+
+export const boxShops = [
+    {
+        img: imgSport1,
+        title: "UFC GYM",
+        desc: "Спорт",
+        index: "Sport",
+    },
+    {
+        img: imgSport2,
+        title: "Way2Fit",
+        desc: "Спорт",
+        index: "Sport",
+    },
+    {
+        img: imgSport3,
+        title: "VELOBEAT",
+        desc: "Спорт",
+        index: "Sport",
+    },
+    {
+        img: imgSport4,
+        title: "Сплав",
+        desc: "Спорт",
+        index: "Sport",
+    },
+    {
+        img: imgSport5,
+        title: "СпортДепо",
+        desc: "Спорт",
+        index: "Sport",
+    },
+    {
+        img: imgShop1,
+        title: "Intimissimi",
+        desc: "Магазины",
+        index: "Shop",
+    },
+    {
+        img: imgShop2,
+        title: "Realboxing",
+        desc: "Магазины",
+        index: "Shop",
+    },
+    {
+        img: imgShop3,
+        title: "Айкрафт Оптика",
+        desc: "Магазины",
+        index: "Shop",
+    },
+    {
+        img: imgShop4,
+        title: "Мармеладный капитан",
+        desc: "Магазины",
+        index: "Shop",
+    },
+    {
+        img: imgShop5,
+        title: "Перекресток",
+        desc: "Магазины",
+        index: "Shop",
+    },
+    {
+        img: imgRestaurant1,
+        title: "Вахтанг",
+        desc: "Рестораны",
+        index: "Restaurant",
+    },
+    {
+        img: imgRestaurant2,
+        title: "Дагестанская лавка",
+        desc: "Рестораны",
+        index: "Restaurant",
+    },
+    {
+        img: imgRestaurant3,
+        title: "Крошка картошка",
+        desc: "Рестораны",
+        index: "Restaurant",
+    },
+    {
+        img: imgRestaurant4,
+        title: "Кухня Кипра",
+        desc: "Рестораны",
+        index: "Restaurant",
+    },
+    {
+        img: imgChild1,
+        title: "Baby Gym",
+        desc: "Дети",
+        index: "Child",
+    },
+    {
+        img: imgChild2,
+        title: "Детский мир",
+        desc: "Дети",
+        index: "Child",
+    },
+    {
+        img: imgChild3,
+        title: "Детский центр",
+        desc: "Дети",
+        index: "Child",
+    },
+];

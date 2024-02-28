@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 import { useEffect, useRef, useState } from "react";
 
@@ -116,11 +116,11 @@ export default function Header() {
                 >
                     <div className="header-container__wrapper">
                         <div className="header-container__wrapper-height header-container__wrapper-white">
-                            <div className="while-flex__Logo">
+                            <NavLink className="while-flex__Logo" to={"/"}>
                                 <h1>
                                     Vivi <strong>Fuel</strong>
                                 </h1>
-                            </div>
+                            </NavLink>
 
                             <ul className="while-flex__Catalog">
                                 {headerMenu.map((item, index) => {
