@@ -8,9 +8,6 @@ import imgSignIn from "../../img/img_SportArena/1-header/Account-list (2).svg";
 import imgCart from "../../img/img_SportArena/1-header/Cart-list.svg";
 import Right from "../../img/img_SportArena/2-main/section-1/Main/angle-small-right 1.svg";
 
-import Home from "../../pages/Home/Home";
-import Food from "../../pages/Food/Food";
-import ChildArena from "../../pages/ChildArena/ChildArena";
 import RegistrModal from "../RegistrModal/RegistrModal";
 
 const headerMenu = [
@@ -31,12 +28,17 @@ const headerMenu = [
     {
         img: imgCart,
         desc: "Корзина",
+        path: "/Basket",
     },
 ];
 
 const headerCatalog = [
     {
         desc: "Афиша и билеты",
+        path: "/Posters",
+    },
+    {
+        desc: "Товары",
         path: "#",
     },
     {
@@ -53,10 +55,6 @@ const headerCatalog = [
     },
     {
         desc: "Медиа",
-        path: "#",
-    },
-    {
-        desc: "SkyBox",
         path: "#",
     },
     {
@@ -136,7 +134,7 @@ export default function Header() {
                                             }}
                                         >
                                             <Link
-                                                to="#"
+                                                to={item.path}
                                                 className="catalog-item__link"
                                             >
                                                 <span className="catalog-item__list">

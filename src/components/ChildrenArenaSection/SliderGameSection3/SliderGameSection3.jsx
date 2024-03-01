@@ -1,5 +1,6 @@
 import "../SliderGameSection/SliderGameSection.scss";
 import { enterainmentFood } from "../../../helpers/ProductsList";
+import { Link } from "react-router-dom";
 
 export default function SliderGameSection3() {
     return (
@@ -9,17 +10,26 @@ export default function SliderGameSection3() {
                     {enterainmentFood.map((item, i) => {
                         return (
                             <div class="wrapper-enterainment__food">
-                                <div class="wrapper-enterainment__food-img">
+                                <Link
+                                    to={"/Cafe"}
+                                    class="wrapper-enterainment__food-img"
+                                >
                                     <img src={item.img} width="100%" />
-                                </div>
+                                </Link>
 
-                                <div class="wrapper-enterainment__food-text">
+                                <Link
+                                    to={"/Cafe"}
+                                    class="wrapper-enterainment__food-text"
+                                >
                                     <h1>{item.title}</h1>
-                                </div>
+                                </Link>
 
-                                <div class="element__grid-container_svg">
+                                <Link
+                                    to={"/Cafe"}
+                                    class="element__grid-container_svg"
+                                >
                                     <img src={item.Nextimg} />
-                                </div>
+                                </Link>
                             </div>
                         );
                     })}
