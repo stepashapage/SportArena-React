@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export const breadcrumbsLinks = [
     { path: "/ChidrenArena", Name: "Главная" },
     { path: "/ChidrenArena", Name: "Кафе" },
-    { path: "/Cafe", Name: "Пиццерия" },
+    { path: "/Cafe", Name: "Пиццерия ViviFood" },
 ];
 
 export default function CafeChildArena() {
@@ -45,7 +45,7 @@ export default function CafeChildArena() {
                         </ul>
 
                         <h1 className="wrapperBuyTicket-col_title">
-                            Все пиццы
+                            Пиццерия ViviFood
                         </h1>
 
                         <div className="content__top">
