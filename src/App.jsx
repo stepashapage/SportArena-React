@@ -12,6 +12,7 @@ import Shop from "./pages/Shop/Shop";
 import Posters from "./pages/Posters/Posters";
 import CafeChildArena from "./pages/CafeChildArena/CafeChildArena";
 import Basket from "./pages/Basket/Basket";
+import NotFound from "./pages/NotFound";
 
 export default function App() {
     return (
@@ -32,6 +33,8 @@ export default function App() {
                     <Route path="/Cafe" element={<CafeChildArena />} />
 
                     <Route path="/Food" element={<Food />} />
+
+                    <Route path="*" element={<NotFound />} />
                 </Routes>
 
                 <Footer />

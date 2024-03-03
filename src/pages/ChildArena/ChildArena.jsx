@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import EnterainmentSection from "../../components/ChildrenArenaSection/EnterainmentSection/EnterainmentSection";
 import EnterainmentSection2 from "../../components/ChildrenArenaSection/EnterainmentSection2/EnterainmentSection2";
 import EnterainmentSection3 from "../../components/ChildrenArenaSection/EnterainmentSection3/EnterainmentSection3";
@@ -8,6 +9,10 @@ import SliderGameSection3 from "../../components/ChildrenArenaSection/SliderGame
 import SkySection from "../../components/ChildrenArenaSection/skySection/SkySection";
 
 export default function ChildArena() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <MovieSection />

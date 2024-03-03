@@ -1,9 +1,46 @@
 @import "../variables";
 
+@mixin font-ExtraBold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(24px, 1.5vw, 32px);
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #273461;
+}
+
+@mixin font-Bold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(18px, 1.1vw, 24px);
+    font-weight: 600;
+    line-height: 2.25rem;
+    color: #273461;
+}
+
+@mixin font-Regular__1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(16px, 0.93vw, 20px);
+    font-weight: 500;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(14px, 0.78vw, 16px);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #273461;
+}
+
 .pizza-block {
     width: 280px;
     text-align: center;
     margin-bottom: 65px;
+
+    &-wrapper {
+        display: flex;
+        justify-content: center;
+    }
 
     &:not(:nth-of-type(4n)) {
         margin-right: 35px;
@@ -18,6 +55,8 @@
         font-weight: 900;
         letter-spacing: 1%;
         margin-bottom: 20px;
+        @include font-Bold();
+        line-height: 1.5rem;
     }
 
     &__selector {
@@ -36,6 +75,8 @@
             }
 
             li {
+                @include font-Regular__1();
+                line-height: 1.2rem;
                 padding: 8px;
                 flex: 1;
                 cursor: pointer;
@@ -64,5 +105,8 @@
         font-size: 22px;
         line-height: 27px;
         letter-spacing: 0.015em;
+        @include font-Regular__1();
+        font-weight: 700;
+        line-height: 1.2rem;
     }
 }

@@ -1,0 +1,21 @@
+.bgc {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0 0 25px 25px;
+    background: linear-gradient(239.61deg, #11387a 32.99%, #0194d8 99.3%);
+}
+
+@media (width < 1150px) {
+    .bgc {
+        height: 425px;
+    }
+}
+
+@media (width < 900px) {
+    .bgc {
+        height: 750px;
+    }
+}

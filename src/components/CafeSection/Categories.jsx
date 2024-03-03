@@ -31,14 +31,6 @@ export const PizzaItems = [
 export default function Categories() {
     const [activeIndex, setActiveIndex] = useState(0);
 
-    const javaScript = (event) => {
-        const el = event.target;
-
-        document
-            .querySelector(".filter__item-link.filter__item-link--Active")
-            .classList.remove("filter__item-link--Active");
-        el.classList.add("filter__item-link--Active");
-    };
     return (
         <ul className="filter">
             {PizzaItems.map((filterItem, i) => {

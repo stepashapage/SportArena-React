@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import styles from "./cafe.module.scss";
 import "./app.scss";
+
 import Categories from "../../components/CafeSection/Categories";
 import Sort from "../../components/CafeSection/Sort";
 import PizzaBlock from "../../components/CafeSection/PizzaBlock";
-import { useEffect, useState } from "react";
+import { Skeleton } from "../../components/CafeSection/Skeleton";
 
 export const breadcrumbsLinks = [
     { path: "/ChidrenArena", Name: "Главная" },
@@ -13,18 +16,23 @@ export const breadcrumbsLinks = [
 
 export default function CafeChildArena() {
     const [items, setItems] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch("https://65e1b95ca8583365b3171da6.mockapi.io/items")
             .then((res) => res.json())
             .then((arr) => {
-                setItems(arr);
+                setTimeout(() => {
+                    setItems(arr);
+                    setIsLoading(false);
+                }, 200);
             });
+        window.scrollTo(0, 0);
     }, []);
 
     return (
         <>
-            <div className="section-bg"></div>
+            <div className={styles.bgc}></div>
 
             <section className="sectionShop section--MainInformation">
                 <div className="MainInformation__container">
@@ -58,9 +66,11 @@ export default function CafeChildArena() {
 
             <section className="sectionShop section--PageContent">
                 <div className="content__items">
-                    {items.map((pizza) => {
-                        return <PizzaBlock key={pizza.id} {...pizza} />;
-                    })}
+                    {isLoading
+                        ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
+                        : items.map((pizza) => (
+                              <PizzaBlock key={pizza.id} {...pizza} />
+                          ))}
                 </div>
             </section>
         </>

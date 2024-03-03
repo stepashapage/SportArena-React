@@ -264,6 +264,10 @@
     gap: 2rem;
     align-items: start;
 
+    @media (width < 1200px) {
+        grid-template-columns: 1fr;
+    }
+
     .DateEvent__image {
         position: relative;
         overflow: hidden;

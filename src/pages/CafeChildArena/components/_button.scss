@@ -1,5 +1,37 @@
 @import "../variables";
 
+@mixin font-ExtraBold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(24px, 1.5vw, 32px);
+    font-weight: 700;
+    line-height: 2.5rem;
+    color: #273461;
+}
+
+@mixin font-Bold {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(18px, 1.1vw, 24px);
+    font-weight: 600;
+    line-height: 2.25rem;
+    color: #273461;
+}
+
+@mixin font-Regular__1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(16px, 0.93vw, 20px);
+    font-weight: 500;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+@mixin font-Regular__2 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(10px, 0.78vw, 14px);
+    font-weight: 400;
+    line-height: 1.5rem;
+    color: #273461;
+}
+
 .button {
     display: inline-block;
     background-color: $orange;
@@ -102,8 +134,9 @@
         }
 
         span {
+            @include font-Regular__1();
             font-weight: 600;
-            font-size: 16px;
+            color: $orange;
         }
 
         &:hover {

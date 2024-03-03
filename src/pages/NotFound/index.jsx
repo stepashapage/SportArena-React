@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
-import EmptyBasket from "./EmptyBasket";
-import FilledBasket from "./FilledBasket";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import imgTrash from "../../img/img_Basket/trash.svg";
 
 export const breadcrumbsLinks = [
-    { path: "/Cafe", Name: "Пиццерия" },
-    { path: "/Basket", Name: "Корзина" },
+    { path: "/", Name: "Главная" },
+    { path: "*", Name: "Ошибка" },
 ];
 
-export default function Basket() {
+export default function NotFound() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const [isCart, setIsCart] = useState(true);
 
     return (
         <>
@@ -37,28 +33,12 @@ export default function Basket() {
                             })}
                         </ul>
 
-                        <h1 className="wrapperBuyTicket-col_title">Корзина</h1>
-
-                        <div className="content__items">
-                            {isCart === false ? (
-                                <></>
-                            ) : (
-                                <div className="cart__top">
-                                    <div className="cart__clear">
-                                        <img src={imgTrash} />
-
-                                        <span>Очистить корзину</span>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+                        <h1 className="wrapperBuyTicket-col_title">
+                            Oops, Ошибка 404
+                        </h1>
                     </nav>
                 </div>
             </section>
-
-            <div className="sectionShop section--PageContent">
-                {isCart === false ? <EmptyBasket /> : <FilledBasket />}
-            </div>
         </>
     );
 }

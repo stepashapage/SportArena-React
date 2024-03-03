@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./MainInformation.scss";
 import { ButtonFilter } from "../ButtonFilter/ButtonFilter";
 import { useState } from "react";
+import styles from "../../../pages/CafeChildArena/cafe.module.scss";
 
 export const filterItems = [
     {
@@ -51,7 +52,7 @@ export default function MainInformation({ children }) {
 
     return (
         <>
-            <div className="section-bg"></div>
+            <div className={styles.bgc}></div>
 
             <section className="sectionShop section--MainInformation">
                 <div className="MainInformation__container">

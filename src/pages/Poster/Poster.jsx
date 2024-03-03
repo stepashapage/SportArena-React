@@ -6,10 +6,15 @@ import ticket from "../../img/img_SportArena/2-main/section-2/ticket 1.svg";
 import tg from "../../img/img_SportArena/1-header/tg.svg";
 import github from "../../img/img_SportArena/1-header/github.svg";
 import star from "../../img/img_FoodForArena/2-main/section-2/StarReating.svg";
+import { useEffect } from "react";
 
 export default function Poster() {
     const { id } = useParams();
     const poster = eventTickets[id];
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
     return (
         <>

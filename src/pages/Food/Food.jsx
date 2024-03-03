@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import BlogSection from "../../components/FoodSection/BlogSection/BlogSection";
 import CategorySectiton from "../../components/FoodSection/CategorySeciton/CategorySection";
 import MapSection from "../../components/FoodSection/MapSection/MapSection";
@@ -6,6 +7,10 @@ import PromotionSection from "../../components/FoodSection/PromotionSection/Prom
 import SwiperAddSection from "../../components/FoodSection/SwiperAddSection/SwiperAddSection";
 
 export default function Food() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <>
             <SwiperAddSection />
