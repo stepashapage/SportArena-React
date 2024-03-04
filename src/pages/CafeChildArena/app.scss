@@ -59,6 +59,23 @@
     }
 }
 
+.btn-add {
+    text-align: center;
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    border-radius: 30px;
+    margin-right: 5px;
+    cursor: pointer;
+    background-color: white;
+    color: #fe5f1e;
+
+    &:hover {
+        background-color: #123063;
+        color: white;
+    }
+}
+
 .cart {
     &__top {
         display: flex;

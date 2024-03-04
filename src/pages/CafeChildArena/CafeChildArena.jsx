@@ -9,7 +9,7 @@ import PizzaBlock from "../../components/CafeSection/PizzaBlock";
 import { Skeleton } from "../../components/CafeSection/Skeleton";
 
 export const breadcrumbsLinks = [
-    { path: "/ChidrenArena", Name: "Главная" },
+    { path: "/", Name: "Главная" },
     { path: "/ChidrenArena", Name: "Кафе" },
     { path: "/Cafe", Name: "Пиццерия ViviFood" },
 ];
@@ -18,17 +18,26 @@ export default function CafeChildArena() {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [categoriesId, setCategoriesId] = useState(0);
+    const [SortId, setSortId] = useState({
+        name: "популярности",
+        sortProperty: "rating",
+    });
+
     useEffect(() => {
-        fetch("https://65e1b95ca8583365b3171da6.mockapi.io/items")
+        setIsLoading(true);
+        fetch(
+            `https://65e1b95ca8583365b3171da6.mockapi.io/items?${
+                categoriesId > 0 ? `category=${categoriesId}` : ""
+            }&sortBy=${SortId.sortProperty}&order=asc`
+        )
             .then((res) => res.json())
             .then((arr) => {
-                setTimeout(() => {
-                    setItems(arr);
-                    setIsLoading(false);
-                }, 200);
+                setItems(arr);
+                setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, []);
+    }, [categoriesId, SortId]);
 
     return (
         <>
@@ -57,8 +66,14 @@ export default function CafeChildArena() {
                         </h1>
 
                         <div className="content__top">
-                            <Categories />
-                            <Sort />
+                            <Categories
+                                value={categoriesId}
+                                onClickCategories={(i) => setCategoriesId(i)}
+                            />
+                            <Sort
+                                value={SortId}
+                                onClickSort={(i) => setSortId(i)}
+                            />
                         </div>
                     </nav>
                 </div>

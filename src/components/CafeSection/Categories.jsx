@@ -28,17 +28,15 @@ export const PizzaItems = [
     },
 ];
 
-export default function Categories() {
-    const [activeIndex, setActiveIndex] = useState(0);
-
+export default function Categories({ value, onClickCategories }) {
     return (
         <ul className="filter">
             {PizzaItems.map((filterItem, i) => {
                 return (
                     <ButtonFilter
                         key={i}
-                        handleClick={() => setActiveIndex(i)}
-                        isActive={activeIndex === i}
+                        handleClick={() => onClickCategories(i)}
+                        isActive={value === i}
                     >
                         {filterItem.Name}
                     </ButtonFilter>

@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-export default function Sort() {
+export default function Sort({ value, onClickSort }) {
     const [isVisible, setIsVisible] = useState(false);
-    const [isActive, setIsActive] = useState(0);
 
-    const sortList = ["популярности", "цене", "алфавиту"];
+    const sortList = [
+        { name: "популярности", sortProperty: "rating" },
+        { name: "цене", sortProperty: "price" },
+        { name: "алфавиту", sortProperty: "title" },
+    ];
 
     const onClickActiveList = (i) => {
-        setIsActive(i);
+        onClickSort(i);
         setIsVisible(false);
     };
 
@@ -32,7 +35,7 @@ export default function Sort() {
                         setIsVisible(!isVisible);
                     }}
                 >
-                    {sortList[isActive]}
+                    {value.name}
                 </span>
             </div>
             {isVisible && (
@@ -43,13 +46,15 @@ export default function Sort() {
                                 <li
                                     key={i}
                                     onClick={() => {
-                                        onClickActiveList(i);
+                                        onClickActiveList(item);
                                     }}
                                     className={`${
-                                        isActive === i ? "active" : ""
+                                        value.sortProperty === item.sortProperty
+                                            ? "active"
+                                            : ""
                                     }`}
                                 >
-                                    {item}
+                                    {item.name}
                                 </li>
                             );
                         })}
