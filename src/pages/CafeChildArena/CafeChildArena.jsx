@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import styles from "./cafe.module.scss";
 import "./app.scss";
 
@@ -7,6 +7,8 @@ import Categories from "../../components/CafeSection/Categories";
 import Sort from "../../components/CafeSection/Sort";
 import PizzaBlock from "../../components/CafeSection/PizzaBlock";
 import { Skeleton } from "../../components/CafeSection/Skeleton";
+import Search from "../../components/CafeSection/Search/Search";
+import Pagination from "../../components/CafeSection/Pagination/Pagination";
 
 export const breadcrumbsLinks = [
     { path: "/", Name: "Главная" },
@@ -14,22 +16,38 @@ export const breadcrumbsLinks = [
     { path: "/Cafe", Name: "Пиццерия ViviFood" },
 ];
 
+export const SearchContext = createContext();
+
 export default function CafeChildArena() {
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const [categoriesId, setCategoriesId] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [SortId, setSortId] = useState({
         name: "популярности",
         sortProperty: "rating",
     });
 
+    const [SearchValue, setSearchValue] = useState("");
+
+    const skeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
+    const pizzas = items
+        .filter((i) => {
+            if (i.title.toLowerCase().includes(SearchValue.toLowerCase())) {
+                return true;
+            }
+            return false;
+        })
+        .map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />);
+
     useEffect(() => {
         setIsLoading(true);
+
+        const category = categoriesId > 0 ? `category=${categoriesId}` : "";
+
         fetch(
-            `https://65e1b95ca8583365b3171da6.mockapi.io/items?${
-                categoriesId > 0 ? `category=${categoriesId}` : ""
-            }&sortBy=${SortId.sortProperty}&order=asc`
+            `https://65e1b95ca8583365b3171da6.mockapi.io/items?page=${currentPage}&limit=8&${category}&sortBy=${SortId.sortProperty}&order=asc`
         )
             .then((res) => res.json())
             .then((arr) => {
@@ -37,10 +55,10 @@ export default function CafeChildArena() {
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, [categoriesId, SortId]);
+    }, [categoriesId, SortId, currentPage]);
 
     return (
-        <>
+        <SearchContext.Provider value={{ SearchValue, setSearchValue }}>
             <div className={styles.bgc}></div>
 
             <section className="sectionShop section--MainInformation">
@@ -61,9 +79,12 @@ export default function CafeChildArena() {
                             })}
                         </ul>
 
-                        <h1 className="wrapperBuyTicket-col_title">
-                            Пиццерия ViviFood
-                        </h1>
+                        <div className="wrapperBuyTicket-searchTitle">
+                            <h1 className="wrapperBuyTicket-col_title">
+                                Пиццерия ViviFood
+                            </h1>
+                            <Search />
+                        </div>
 
                         <div className="content__top">
                             <Categories
@@ -81,13 +102,14 @@ export default function CafeChildArena() {
 
             <section className="sectionShop section--PageContent">
                 <div className="content__items">
-                    {isLoading
-                        ? [...new Array(6)].map((_, i) => <Skeleton key={i} />)
-                        : items.map((pizza) => (
-                              <PizzaBlock key={pizza.id} {...pizza} />
-                          ))}
+                    {isLoading ? skeletons : pizzas}
                 </div>
+                <Pagination
+                    onChangePage={(number) => {
+                        setCurrentPage(number);
+                    }}
+                />
             </section>
-        </>
+        </SearchContext.Provider>
     );
 }

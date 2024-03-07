@@ -133,6 +133,13 @@
     }
 }
 
+.wrapperBuyTicket-searchTitle {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+}
+
 .wrapperBuyTicket-col_title {
     @include font-ExtraBold();
     color: #fff;

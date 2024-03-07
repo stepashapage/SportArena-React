@@ -1,0 +1,45 @@
+@mixin font-Regular__1 {
+    font-family: "Open Sans", sans-serif;
+    font-size: clamp(16px, 0.93vw, 20px);
+    font-weight: 500;
+    line-height: 1.75rem;
+    color: #273461;
+}
+
+.root {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    li {
+        &:global {
+            &.selected a {
+                background-color: #1e6ff4;
+                color: #fff;
+                border-radius: 10px;
+            }
+            &.previous a,
+            &.next a {
+                border-radius: 50%;
+            }
+        }
+        a {
+            display: flex;
+            height: 35px;
+            width: 35px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: #e7e7e7;
+            @include font-Regular__1();
+            font-size: clamp(14px, 0.93vw, 16px);
+            font-weight: 600;
+            cursor: pointer;
+
+            &:hover {
+                color: #1e6ff4;
+            }
+        }
+    }
+}
