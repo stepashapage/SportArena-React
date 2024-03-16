@@ -9,6 +9,8 @@ import PizzaBlock from "../../components/CafeSection/PizzaBlock";
 import { Skeleton } from "../../components/CafeSection/Skeleton";
 import Search from "../../components/CafeSection/Search/Search";
 import Pagination from "../../components/CafeSection/Pagination/Pagination";
+import { useDispatch, useSelector } from "react-redux";
+import { setCategoryId } from "../../redux/slices/filterslice";
 
 export const breadcrumbsLinks = [
     { path: "/", Name: "Главная" },
@@ -19,15 +21,19 @@ export const breadcrumbsLinks = [
 export const SearchContext = createContext();
 
 export default function CafeChildArena() {
+    const categoryId = useSelector((state) => state.filter.categoryId);
+    const sortType = useSelector((state) => state.filter.sort.sortProperty);
+
+    const dispatch = useDispatch();
+
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const [categoriesId, setCategoriesId] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
-    const [SortId, setSortId] = useState({
-        name: "популярности",
-        sortProperty: "rating",
-    });
+
+    const onClickCategories = (id) => {
+        dispatch(setCategoryId(id));
+    };
 
     const [SearchValue, setSearchValue] = useState("");
 
@@ -44,10 +50,10 @@ export default function CafeChildArena() {
     useEffect(() => {
         setIsLoading(true);
 
-        const category = categoriesId > 0 ? `category=${categoriesId}` : "";
+        const category = categoryId > 0 ? `category=${categoryId}` : "";
 
         fetch(
-            `https://65e1b95ca8583365b3171da6.mockapi.io/items?page=${currentPage}&limit=8&${category}&sortBy=${SortId.sortProperty}&order=asc`
+            `https://65e1b95ca8583365b3171da6.mockapi.io/items?page=${currentPage}&limit=8&${category}&sortBy=${sortType}&order=asc`
         )
             .then((res) => res.json())
             .then((arr) => {
@@ -55,7 +61,7 @@ export default function CafeChildArena() {
                 setIsLoading(false);
             });
         window.scrollTo(0, 0);
-    }, [categoriesId, SortId, currentPage]);
+    }, [categoryId, sortType, currentPage]);
 
     return (
         <SearchContext.Provider value={{ SearchValue, setSearchValue }}>
@@ -88,13 +94,10 @@ export default function CafeChildArena() {
 
                         <div className="content__top">
                             <Categories
-                                value={categoriesId}
-                                onClickCategories={(i) => setCategoriesId(i)}
+                                value={categoryId}
+                                onClickCategories={onClickCategories}
                             />
-                            <Sort
-                                value={SortId}
-                                onClickSort={(i) => setSortId(i)}
-                            />
+                            <Sort />
                         </div>
                     </nav>
                 </div>

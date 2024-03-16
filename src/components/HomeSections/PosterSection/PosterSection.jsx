@@ -90,23 +90,23 @@ const dateItem3 = [
 export default function PosterSection() {
     return (
         <>
-            <section class="section-2 section">
-                <div class="section2-container">
-                    <div class="section2-container__wrapper">
-                        <div class="wrapper-element__header">
+            <section className="section-2 section">
+                <div className="section2-container">
+                    <div className="section2-container__wrapper">
+                        <div className="wrapper-element__header">
                             <h1>Афиша</h1>
                         </div>
-                        <div class="wrapper-element__Date">
-                            <div class="Date-item">
-                                <div class="Date-item__month">
+                        <div className="wrapper-element__Date">
+                            <div className="Date-item">
+                                <div className="Date-item__month">
                                     <h1>Ноябрь 2023</h1>
                                 </div>
 
-                                <div class="Date-item__number">
+                                <div className="Date-item__number">
                                     {dateItem1.map((item, i) => {
                                         return (
                                             <div
-                                                class="Date-item__number-link"
+                                                className="Date-item__number-link"
                                                 key={i}
                                             >
                                                 <h1>{item.title}</h1>
@@ -117,16 +117,16 @@ export default function PosterSection() {
                                 </div>
                             </div>
 
-                            <div class="Date-item">
-                                <div class="Date-item__month">
+                            <div className="Date-item">
+                                <div className="Date-item__month">
                                     <h1>Декабрь 2023</h1>
                                 </div>
 
-                                <div class="Date-item__number">
+                                <div className="Date-item__number">
                                     {dateItem2.map((item, i) => {
                                         return (
                                             <div
-                                                class="Date-item__number-link"
+                                                className="Date-item__number-link"
                                                 key={i}
                                             >
                                                 <h1>{item.title}</h1>
@@ -137,16 +137,16 @@ export default function PosterSection() {
                                 </div>
                             </div>
 
-                            <div class="Date-item">
-                                <div class="Date-item__month">
+                            <div className="Date-item">
+                                <div className="Date-item__month">
                                     <h1>Январь 2023</h1>
                                 </div>
 
-                                <div class="Date-item__number">
+                                <div className="Date-item__number">
                                     {dateItem3.map((item, i) => {
                                         return (
                                             <div
-                                                class="Date-item__number-link"
+                                                className="Date-item__number-link"
                                                 key={i}
                                             >
                                                 <h1>{item.title}</h1>
@@ -158,17 +158,17 @@ export default function PosterSection() {
                             </div>
                         </div>
 
-                        <div class="wrapper-element__ticket">
-                            <div class="wrapper-element__ticket-grid1">
+                        <div className="wrapper-element__ticket">
+                            <div className="wrapper-element__ticket-grid1">
                                 {eventTickets
                                     .filter((item, index) => index < 2)
                                     .map((eventTicket, index) => {
                                         return (
                                             <div
-                                                class="ticket-grid__container grid__container"
+                                                className="ticket-grid__container grid__container"
                                                 key={index}
                                             >
-                                                <div class="ticket-grid1__container-img">
+                                                <div className="ticket-grid1__container-img">
                                                     <img
                                                         src={
                                                             eventTicket.imgLine
@@ -176,20 +176,20 @@ export default function PosterSection() {
                                                     />
                                                 </div>
 
-                                                <div class="ticket-grid1__container-item">
-                                                    <div class="ticket-grid1__container-item_h1">
+                                                <div className="ticket-grid1__container-item">
+                                                    <div className="ticket-grid1__container-item_h1">
                                                         <h1>
                                                             {eventTicket.title}
                                                         </h1>
                                                     </div>
 
-                                                    <div class="ticket-grid1__container-item_textInfo">
+                                                    <div className="ticket-grid1__container-item_textInfo">
                                                         <p>
                                                             {eventTicket.desc}
                                                         </p>
                                                     </div>
 
-                                                    <div class="ticket-grid1__container-item_button">
+                                                    <div className="ticket-grid1__container-item_button">
                                                         <button>
                                                             <img src={ticket} />
                                                             <p>от 300 ₽</p>
@@ -201,16 +201,16 @@ export default function PosterSection() {
                                     })}
                             </div>
 
-                            <div class="wrapper-element__ticket-grid2">
+                            <div className="wrapper-element__ticket-grid2">
                                 {eventTickets
                                     .filter((item, index) => index > 1)
                                     .map((eventTicket, index) => {
                                         return (
                                             <div
-                                                class="ticket-grid__container grid__container"
+                                                className="ticket-grid__container grid__container"
                                                 key={index}
                                             >
-                                                <div class="ticket-grid1__container-img">
+                                                <div className="ticket-grid1__container-img">
                                                     <img
                                                         src={
                                                             eventTicket.imgLine
@@ -218,20 +218,20 @@ export default function PosterSection() {
                                                     />
                                                 </div>
 
-                                                <div class="ticket-grid1__container-item">
-                                                    <div class="ticket-grid1__container-item_h1">
+                                                <div className="ticket-grid1__container-item">
+                                                    <div className="ticket-grid1__container-item_h1">
                                                         <h1>
                                                             {eventTicket.title}
                                                         </h1>
                                                     </div>
 
-                                                    <div class="ticket-grid1__container-item_textInfo">
+                                                    <div className="ticket-grid1__container-item_textInfo">
                                                         <p>
                                                             {eventTicket.desc}
                                                         </p>
                                                     </div>
 
-                                                    <div class="ticket-grid1__container-item_button">
+                                                    <div className="ticket-grid1__container-item_button">
                                                         <button>
                                                             <img src={ticket} />
                                                             <p>от 300 ₽</p>

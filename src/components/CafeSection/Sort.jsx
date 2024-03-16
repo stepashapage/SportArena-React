@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setSortId } from "../../redux/slices/filterslice";
 
-export default function Sort({ value, onClickSort }) {
+export default function Sort() {
+    const sort = useSelector((state) => state.filter.sort);
+    const dispatch = useDispatch();
     const [isVisible, setIsVisible] = useState(false);
 
     const sortList = [
@@ -10,7 +14,7 @@ export default function Sort({ value, onClickSort }) {
     ];
 
     const onClickActiveList = (i) => {
-        onClickSort(i);
+        dispatch(setSortId(i));
         setIsVisible(false);
     };
 
@@ -35,7 +39,7 @@ export default function Sort({ value, onClickSort }) {
                         setIsVisible(!isVisible);
                     }}
                 >
-                    {value.name}
+                    {sort.name}
                 </span>
             </div>
             {isVisible && (
@@ -49,7 +53,7 @@ export default function Sort({ value, onClickSort }) {
                                         onClickActiveList(item);
                                     }}
                                     className={`${
-                                        value.sortProperty === item.sortProperty
+                                        sort.sortProperty === item.sortProperty
                                             ? "active"
                                             : ""
                                     }`}

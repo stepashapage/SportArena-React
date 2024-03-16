@@ -37,22 +37,22 @@ const AcademyHeader = [
 export default function AcademySection() {
     return (
         <>
-            <section class="section-4 section">
-                <div class="section4-container">
-                    <div class="section4-container__academy">
-                        <div class="academy-header">
-                            <div class="academy-header__Logo">
+            <section className="section-4 section">
+                <div className="section4-container">
+                    <div className="section4-container__academy">
+                        <div className="academy-header">
+                            <div className="academy-header__Logo">
                                 <h1>Академия “Vivi Fuel”</h1>
                             </div>
 
-                            <div class="academy-header__menu">
+                            <div className="academy-header__menu">
                                 {AcademyHeader.map((item, i) => {
                                     return (
                                         <div
-                                            class="academy-header__menu-item"
+                                            className="academy-header__menu-item"
                                             key={i}
                                         >
-                                            <div class="academy-header__menu-item_link">
+                                            <div className="academy-header__menu-item_link">
                                                 <a href="#">{item.Name}</a>
                                             </div>
                                         </div>
@@ -61,16 +61,16 @@ export default function AcademySection() {
                             </div>
                         </div>
 
-                        <div class="academy-info">
-                            <div class="academy-info__text">
-                                <div class="academy-info__text-h1">
+                        <div className="academy-info">
+                            <div className="academy-info__text">
+                                <div className="academy-info__text-h1">
                                     <h1>
                                         Информация о том, как стать футболистом
                                         Академии «Спартак»
                                     </h1>
                                 </div>
 
-                                <div class="academy-info__text-p">
+                                <div className="academy-info__text-p">
                                     <p>
                                         Более юным футболистам мы рекомендуем
                                         занятия в наших школах-партнерах, в
@@ -79,25 +79,25 @@ export default function AcademySection() {
                                     </p>
                                 </div>
 
-                                <div class="academy-info__text-button">
+                                <div className="academy-info__text-button">
                                     <button>Подробнее</button>
                                 </div>
                             </div>
 
-                            <div class="academy-info__image">
+                            <div className="academy-info__image">
                                 <img src={academyImg} width="100%" />
                             </div>
                         </div>
 
-                        <div class="academy-achievements">
-                            <div class="academy-achievements__header">
+                        <div className="academy-achievements">
+                            <div className="academy-achievements__header">
                                 <h1>Наша академия - это</h1>
                             </div>
-                            <div class="academy-achievements__info">
+                            <div className="academy-achievements__info">
                                 {academy.map((item, i) => {
                                     return (
                                         <div
-                                            class="academy-achievements__info-container"
+                                            className="academy-achievements__info-container"
                                             key={i}
                                         >
                                             <img src={item.img} width="30%" />
