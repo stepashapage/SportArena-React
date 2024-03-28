@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import EmptyBasket from "./EmptyBasket";
 import FilledBasket from "./FilledBasket";
 import { Link } from "react-router-dom";
 import imgTrash from "../../img/img_Basket/trash.svg";
+import { clearItems } from "../../redux/slices/cartSlice";
 
 export const breadcrumbsLinks = [
     { path: "/Cafe", Name: "Пиццерия" },
@@ -10,10 +12,18 @@ export const breadcrumbsLinks = [
 ];
 
 export default function Basket() {
+    const dispatch = useDispatch();
+    const onClickClear = () => {
+        if (window.confirm("Очистить корзину ?")) {
+            dispatch(clearItems());
+        }
+    };
+
+    const { TotalPrice } = useSelector((state) => state.cart);
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
-    const [isCart, setIsCart] = useState(true);
 
     return (
         <>
@@ -40,10 +50,13 @@ export default function Basket() {
                         <h1 className="wrapperBuyTicket-col_title">Корзина</h1>
 
                         <div className="content__items">
-                            {isCart === false ? (
+                            {!TotalPrice ? (
                                 <></>
                             ) : (
-                                <div className="cart__top">
+                                <div
+                                    onClick={onClickClear}
+                                    className="cart__top"
+                                >
                                     <div className="cart__clear">
                                         <img src={imgTrash} />
 
@@ -57,7 +70,7 @@ export default function Basket() {
             </section>
 
             <div className="sectionShop section--PageContent">
-                {isCart === false ? <EmptyBasket /> : <FilledBasket />}
+                {!TotalPrice ? <EmptyBasket /> : <FilledBasket />}
             </div>
         </>
     );
