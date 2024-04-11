@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import CartItem from "../../components/CafeSection/CartItem";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectCart } from "../../redux/slices/cartSlice";
 
 export default function FilledBasket() {
-    const dispatch = useDispatch();
-    const { TotalPrice, items } = useSelector((state) => state.cart);
+    const { TotalPrice, items } = useSelector(selectCart);
 
     const totalCount = items.reduce((sum, item) => sum + item.count, 0);
 

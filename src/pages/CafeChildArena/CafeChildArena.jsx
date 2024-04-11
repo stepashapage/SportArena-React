@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { createContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./cafe.module.scss";
 import "./app.scss";
 
@@ -15,8 +15,8 @@ import {
     setFilters,
     setPageCount,
 } from "../../redux/slices/filterslice";
-import axios from "axios";
 import QueryString from "qs";
+import { fetchPizzas } from "../../redux/slices/pizzasSlice";
 
 export const breadcrumbsLinks = [
     { path: "/", Name: "Главная" },
@@ -24,24 +24,23 @@ export const breadcrumbsLinks = [
     { path: "/Cafe", Name: "Пиццерия ViviFood" },
 ];
 
-export const SearchContext = createContext();
+// export const SearchContext = createContext();
 
 export default function CafeChildArena() {
     const categoryId = useSelector((state) => state.filter.categoryId);
     const sortType = useSelector((state) => state.filter.sort.sortProperty);
     const pageCount = useSelector((state) => state.filter.pageCount);
+    const { items, status } = useSelector((state) => state.pizza);
+    const SearchValue = useSelector((state) => state.filter.SearchValue);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
 
     const onClickCategories = (id) => {
         dispatch(setCategoryId(id));
     };
 
-    const [SearchValue, setSearchValue] = useState("");
+    // const [SearchValue, setSearchValue] = useState("");
 
     const skeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
     const pizzas = items
@@ -72,21 +71,22 @@ export default function CafeChildArena() {
         }
     }, []);
 
-    useEffect(() => {
-        setIsLoading(true);
-
+    const fetchRequest = async () => {
         const category = categoryId > 0 ? `category=${categoryId}` : "";
 
-        axios
-            .get(
-                `https://65e1b95ca8583365b3171da6.mockapi.io/items?page=${pageCount}&limit=8&${category}&sortBy=${sortType}&order=asc`
-            )
-            .then((response) => {
-                setItems(response.data);
-                setIsLoading(false);
-            });
+        dispatch(
+            fetchPizzas({
+                sortType,
+                pageCount,
+                category,
+            })
+        );
 
         window.scrollTo(0, 0);
+    };
+
+    useEffect(() => {
+        fetchRequest();
     }, [categoryId, sortType, pageCount]);
 
     useEffect(() => {
@@ -99,7 +99,8 @@ export default function CafeChildArena() {
     }, [categoryId, sortType, pageCount]);
 
     return (
-        <SearchContext.Provider value={{ SearchValue, setSearchValue }}>
+        // <SearchContext.Provider value={{ SearchValue, setSearchValue }}>
+        <>
             <div className={styles.bgc}></div>
 
             <section className="sectionShop section--MainInformation">
@@ -139,9 +140,14 @@ export default function CafeChildArena() {
             </section>
 
             <section className="sectionShop section--PageContent">
-                <div className="content__items">
-                    {isLoading ? skeletons : pizzas}
-                </div>
+                {status === "error" ? (
+                    <div>Произошла ошибка, просим прощения</div>
+                ) : (
+                    <div className="content__items">
+                        {status === "loading" ? skeletons : pizzas}
+                    </div>
+                )}
+
                 <Pagination
                     value={pageCount}
                     onChangePage={(number) => {
@@ -149,6 +155,7 @@ export default function CafeChildArena() {
                     }}
                 />
             </section>
-        </SearchContext.Provider>
+        </>
+        // </SearchContext.Provider>
     );
 }

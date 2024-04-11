@@ -4,7 +4,7 @@ import EmptyBasket from "./EmptyBasket";
 import FilledBasket from "./FilledBasket";
 import { Link } from "react-router-dom";
 import imgTrash from "../../img/img_Basket/trash.svg";
-import { clearItems } from "../../redux/slices/cartSlice";
+import { clearItems, selectCart } from "../../redux/slices/cartSlice";
 
 export const breadcrumbsLinks = [
     { path: "/Cafe", Name: "Пиццерия" },
@@ -19,7 +19,7 @@ export default function Basket() {
         }
     };
 
-    const { TotalPrice } = useSelector((state) => state.cart);
+    const { TotalPrice } = useSelector(selectCart);
 
     useEffect(() => {
         window.scrollTo(0, 0);

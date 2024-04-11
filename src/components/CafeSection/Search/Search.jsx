@@ -2,24 +2,26 @@ import styles from "./Search.module.scss";
 
 import svgSearch from "../../../img/img_ChildArena/2-main/search-svgrepo-com.svg";
 import svgClose from "../../../img/img_ChildArena/2-main/close-circle-svgrepo-com.svg";
-import { useCallback, useContext, useRef, useState } from "react";
-import { SearchContext } from "../../../pages/CafeChildArena/CafeChildArena";
+import { useCallback, useRef, useState } from "react";
 import { debounce } from "lodash";
+import { useDispatch } from "react-redux";
+import { setSearchValue } from "../../../redux/slices/filterslice";
 
 export default function Search() {
-    const { setSearchValue } = useContext(SearchContext);
+    // const { setSearchValue } = useContext(SearchContext);
+    const dispatch = useDispatch();
     const [value, setValue] = useState();
     const inputRef = useRef();
 
     const onClickClear = () => {
-        setSearchValue("");
+        dispatch(setSearchValue(""));
         setValue("");
         inputRef.current.focus();
     };
 
     const updateSearchValue = useCallback(
         debounce((str) => {
-            setSearchValue(str);
+            dispatch(setSearchValue(str));
         }, 1000),
         []
     );
