@@ -24,13 +24,12 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/Poster/:id" element={<Poster />} />
                     <Route path="/Shop" element={<Shop />} />
-                    <Route path="/Posters" element={<Posters />} />
-                    {/* <Route path="/Posters/:name" element={<Posters />} /> */}
 
                     <Route path="/Basket" element={<Basket />} />
 
                     <Route path="/ChidrenArena" element={<ChildArena />} />
                     <Route path="/Cafe" element={<CafeChildArena />} />
+                    <Route path="/Cafe/:id" element={<Posters />} />
 
                     <Route path="/Food" element={<Food />} />
 

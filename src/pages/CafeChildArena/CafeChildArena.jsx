@@ -50,7 +50,7 @@ export default function CafeChildArena() {
             }
             return false;
         })
-        .map((pizza) => <PizzaBlock key={pizza.id} {...pizza} />);
+        .map((pizza) => <PizzaBlock {...pizza} key={pizza.id} />);
 
     useEffect(() => {
         if (window.location.search) {

@@ -1,0 +1,32 @@
+.ticket_DateEvent {
+    width: 100%;
+    padding: 0 2.1875rem 0 2.1875rem;
+}
+
+.DateEvent__image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    border-radius: 25px;
+
+    img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        -o-object-position: 50% 50%;
+        object-position: 50% 50%;
+        width: 300px;
+        height: 300px;
+        transform: scale(1);
+        transition: transform 3s;
+        border-radius: 25px;
+    }
+}
+
+.DateEvent__ticket {
+    background: linear-gradient(239.61deg, #4f72ad 32.99%, #0194d8 99.3%);
+    border-radius: 1.875rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+}
