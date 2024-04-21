@@ -1,34 +1,36 @@
-import { ButtonFilter } from "../../components/ShopSection/ButtonFilter/ButtonFilter";
-import { useState } from "react";
+import React from "react";
+import { ButtonFilter } from "../ShopSection/ButtonFilter/ButtonFilter";
 
 export const PizzaItems = [
     {
         Name: "Все",
-        DataAtrbt: "all",
     },
     {
         Name: "Мясные",
-        DataAtrbt: "Child",
     },
     {
         Name: "Вегетарианская",
-        DataAtrbt: "Sport",
     },
     {
         Name: "Гриль",
-        DataAtrbt: "Shops",
     },
     {
         Name: "Острые",
-        DataAtrbt: "restaurants",
     },
     {
         Name: "Закрытые",
-        DataAtrbt: "restaurants",
     },
 ];
 
-export default function Categories({ value, onClickCategories }) {
+type CategoriesProps = {
+    value: number;
+    onClickCategories: (i: number) => void;
+};
+
+export const Categories: React.FC<CategoriesProps> = ({
+    value,
+    onClickCategories,
+}) => {
     return (
         <ul className="filter">
             {PizzaItems.map((filterItem, i) => {
@@ -44,4 +46,4 @@ export default function Categories({ value, onClickCategories }) {
             })}
         </ul>
     );
-}
+};

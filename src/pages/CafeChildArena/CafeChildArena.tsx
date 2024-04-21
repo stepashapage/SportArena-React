@@ -1,14 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "./cafe.module.scss";
 import "./app.scss";
 
-import Categories from "../../components/CafeSection/Categories";
+import { Categories } from "../../components/CafeSection/Categories";
 import Sort, { sortList } from "../../components/CafeSection/Sort";
-import PizzaBlock from "../../components/CafeSection/PizzaBlock";
+import { PizzaBlock } from "../../components/CafeSection/PizzaBlock";
 import { Skeleton } from "../../components/CafeSection/Skeleton";
-import Search from "../../components/CafeSection/Search/Search";
-import Pagination from "../../components/CafeSection/Pagination/Pagination";
+import { Search } from "../../components/CafeSection/Search/Search";
+import { Pagination } from "../../components/CafeSection/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import {
     setCategoryId,
@@ -26,17 +26,19 @@ export const breadcrumbsLinks = [
 
 // export const SearchContext = createContext();
 
-export default function CafeChildArena() {
-    const categoryId = useSelector((state) => state.filter.categoryId);
-    const sortType = useSelector((state) => state.filter.sort.sortProperty);
-    const pageCount = useSelector((state) => state.filter.pageCount);
-    const { items, status } = useSelector((state) => state.pizza);
-    const SearchValue = useSelector((state) => state.filter.SearchValue);
+export const CafeChildArena: React.FC = () => {
+    const categoryId = useSelector((state: any) => state.filter.categoryId);
+    const sortType = useSelector(
+        (state: any) => state.filter.sort.sortProperty
+    );
+    const pageCount = useSelector((state: any) => state.filter.pageCount);
+    const { items, status } = useSelector((state: any) => state.pizza);
+    const SearchValue = useSelector((state: any) => state.filter.SearchValue);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const onClickCategories = (id) => {
+    const onClickCategories = (id: number) => {
         dispatch(setCategoryId(id));
     };
 
@@ -44,13 +46,13 @@ export default function CafeChildArena() {
 
     const skeletons = [...new Array(6)].map((_, i) => <Skeleton key={i} />);
     const pizzas = items
-        .filter((i) => {
+        .filter((i: any) => {
             if (i.title.toLowerCase().includes(SearchValue.toLowerCase())) {
                 return true;
             }
             return false;
         })
-        .map((pizza) => <PizzaBlock {...pizza} key={pizza.id} />);
+        .map((pizza: any) => <PizzaBlock {...pizza} key={pizza.id} />);
 
     useEffect(() => {
         if (window.location.search) {
@@ -75,6 +77,7 @@ export default function CafeChildArena() {
         const category = categoryId > 0 ? `category=${categoryId}` : "";
 
         dispatch(
+            // @ts-ignore
             fetchPizzas({
                 sortType,
                 pageCount,
@@ -150,7 +153,7 @@ export default function CafeChildArena() {
 
                 <Pagination
                     value={pageCount}
-                    onChangePage={(number) => {
+                    onChangePage={(number: number) => {
                         dispatch(setPageCount(number));
                     }}
                 />
@@ -158,4 +161,4 @@ export default function CafeChildArena() {
         </>
         // </SearchContext.Provider>
     );
-}
+};

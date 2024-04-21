@@ -6,7 +6,7 @@ export const breadcrumbsLinks = [
     { path: "*", Name: "Ошибка" },
 ];
 
-export default function NotFound() {
+export const NotFound = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -41,4 +41,4 @@ export default function NotFound() {
             </section>
         </>
     );
-}
+};

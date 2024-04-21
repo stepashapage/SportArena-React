@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "./Posters.module.scss";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
@@ -7,8 +7,15 @@ import tg from "../../img/img_SportArena/1-header/tg.svg";
 import github from "../../img/img_SportArena/1-header/github.svg";
 import star from "../../img/img_FoodForArena/2-main/section-2/StarReating.svg";
 
-export default function pizzas() {
-    const [pizza, setPizza] = useState();
+export const Posters: React.FC = () => {
+    const [pizza, setPizza] = useState<{
+        rating: number;
+        title: string;
+        imageUrl: string;
+        types: number[];
+        sizes: number[];
+        price: number;
+    }>();
     const { id } = useParams();
     const navigate = useNavigate();
 
@@ -19,11 +26,11 @@ export default function pizzas() {
     const staticClass = "";
     const typeNames = ["тонкое", "традиционное"];
 
-    const onClickList = (i) => {
+    const onClickList = (i: number) => {
         setActiveList(i);
     };
 
-    const onClickTypes = (i) => {
+    const onClickTypes = (i: number) => {
         setActiveTypes(i);
     };
 
@@ -44,7 +51,7 @@ export default function pizzas() {
     }, []);
 
     if (!pizza) {
-        return "";
+        return <></>;
     }
 
     return (
@@ -198,4 +205,4 @@ export default function pizzas() {
             </main>
         </>
     );
-}
+};

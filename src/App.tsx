@@ -9,10 +9,10 @@ import ChildArena from "./pages/ChildArena/ChildArena";
 import Food from "./pages/Food/Food";
 import Poster from "./pages/Poster/Poster";
 import Shop from "./pages/Shop/Shop";
-import Posters from "./pages/Posters/Posters";
-import CafeChildArena from "./pages/CafeChildArena/CafeChildArena";
-import Basket from "./pages/Basket/Basket";
-import NotFound from "./pages/NotFound";
+import { CafeChildArena } from "./pages/CafeChildArena/CafeChildArena";
+import { Basket } from "./pages/Basket/Basket";
+import { NotFound } from "./pages/NotFound";
+import { Posters } from "./pages/Posters/Posters";
 
 export default function App() {
     return (

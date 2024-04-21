@@ -1,17 +1,21 @@
 import { Link } from "react-router-dom";
-import CartItem from "../../components/CafeSection/CartItem";
+import { CartItem } from "../../components/CafeSection/CartItem";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/slices/cartSlice";
+import React from "react";
 
-export default function FilledBasket() {
+export const FilledBasket: React.FC = () => {
     const { TotalPrice, items } = useSelector(selectCart);
 
-    const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+    const totalCount = items.reduce(
+        (sum: number, item: any) => sum + item.count,
+        0
+    );
 
     return (
         <div className="cart">
             <div className="cart__items">
-                {items.map((item) => {
+                {items.map((item: any) => {
                     return <CartItem key={item.id} {...item} />;
                 })}
             </div>
@@ -56,4 +60,4 @@ export default function FilledBasket() {
             </div>
         </div>
     );
-}
+};

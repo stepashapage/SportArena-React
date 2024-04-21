@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import EmptyBasket from "./EmptyBasket";
-import FilledBasket from "./FilledBasket";
+import { EmptyBasket } from "./EmptyBasket";
+import { FilledBasket } from "./FilledBasket";
 import { Link } from "react-router-dom";
 import imgTrash from "../../img/img_Basket/trash.svg";
 import { clearItems, selectCart } from "../../redux/slices/cartSlice";
@@ -11,7 +11,7 @@ export const breadcrumbsLinks = [
     { path: "/Basket", Name: "Корзина" },
 ];
 
-export default function Basket() {
+export const Basket: React.FC = () => {
     const dispatch = useDispatch();
     const onClickClear = () => {
         if (window.confirm("Очистить корзину ?")) {
@@ -74,4 +74,4 @@ export default function Basket() {
             </div>
         </>
     );
-}
+};
