@@ -16,28 +16,26 @@ import { Posters } from "./pages/Posters/Posters";
 
 export default function App() {
     return (
-        <>
-            <BrowserRouter>
-                <Header />
+        <BrowserRouter>
+            <Header />
 
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/Poster/:id" element={<Poster />} />
-                    <Route path="/Shop" element={<Shop />} />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/Poster/:id" element={<Poster />} />
+                <Route path="/Shop" element={<Shop />} />
 
-                    <Route path="/Basket" element={<Basket />} />
+                <Route path="/Basket" element={<Basket />} />
 
-                    <Route path="/ChidrenArena" element={<ChildArena />} />
-                    <Route path="/Cafe" element={<CafeChildArena />} />
-                    <Route path="/Cafe/:id" element={<Posters />} />
+                <Route path="/ChidrenArena" element={<ChildArena />} />
+                <Route path="/Cafe" element={<CafeChildArena />} />
+                <Route path="/Cafe/:id" element={<Posters />} />
 
-                    <Route path="/Food" element={<Food />} />
+                <Route path="/Food" element={<Food />} />
 
-                    <Route path="*" element={<NotFound />} />
-                </Routes>
+                <Route path="*" element={<NotFound />} />
+            </Routes>
 
-                <Footer />
-            </BrowserRouter>
-        </>
+            <Footer />
+        </BrowserRouter>
     );
 }

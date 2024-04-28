@@ -1,32 +1,33 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSortId } from "../../redux/slices/filterslice";
+import { SortPropertyEnum, setSortId } from "../../redux/slices/filterslice";
+import { RootState } from "../../redux/store";
 
 type SortListItem = {
     name: string;
-    sortProperty: string;
+    sortProperty: SortPropertyEnum;
 };
 
 export const sortList: SortListItem[] = [
-    { name: "популярности", sortProperty: "rating" },
-    { name: "цене", sortProperty: "price" },
-    { name: "алфавиту", sortProperty: "title" },
+    { name: "популярности", sortProperty: SortPropertyEnum.RATING },
+    { name: "цене", sortProperty: SortPropertyEnum.PRICE },
+    { name: "алфавиту", sortProperty: SortPropertyEnum.TITLE },
 ];
 
 type PopupElement = MouseEvent & {
     composedPath: Node[];
 };
 
-export default function Sort() {
-    const sort = useSelector((state: any) => state.filter.sort);
+export const Sort: React.FC = memo(() => {
+    const sort = useSelector((state: RootState) => state.filter.sort);
     const dispatch = useDispatch();
     const [isVisible, setIsVisible] = useState(false);
     const sortRef = useRef<HTMLDivElement>(null);
 
-    const onClickActiveList = (i: SortListItem) => {
+    const onClickActiveList = useCallback((i: any) => {
         dispatch(setSortId(i));
         setIsVisible(false);
-    };
+    }, []);
 
     useEffect(() => {
         const handleClickOutside = (e: MouseEvent) => {
@@ -91,4 +92,4 @@ export default function Sort() {
             )}
         </div>
     );
-}
+});

@@ -2,20 +2,27 @@ import { Link } from "react-router-dom";
 import { CartItem } from "../../components/CafeSection/CartItem";
 import { useSelector } from "react-redux";
 import { selectCart } from "../../redux/slices/cartSlice";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 export const FilledBasket: React.FC = () => {
     const { TotalPrice, items } = useSelector(selectCart);
 
-    const totalCount = items.reduce(
-        (sum: number, item: any) => sum + item.count,
-        0
-    );
+    const totalCount = items.reduce((sum, item) => sum + item.count, 0);
+
+    const isMounted = useRef(false);
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const json = JSON.stringify(items);
+            localStorage.setItem("cart", json);
+        }
+        isMounted.current = true;
+    }, [items]);
 
     return (
         <div className="cart">
             <div className="cart__items">
-                {items.map((item: any) => {
+                {items.map((item) => {
                     return <CartItem key={item.id} {...item} />;
                 })}
             </div>

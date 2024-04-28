@@ -1,22 +1,24 @@
 import { Link, useNavigate } from "react-router-dom";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "./cafe.module.scss";
 import "./app.scss";
 
 import { Categories } from "../../components/CafeSection/Categories";
-import Sort, { sortList } from "../../components/CafeSection/Sort";
+import { Sort, sortList } from "../../components/CafeSection/Sort";
 import { PizzaBlock } from "../../components/CafeSection/PizzaBlock";
 import { Skeleton } from "../../components/CafeSection/Skeleton";
 import { Search } from "../../components/CafeSection/Search/Search";
 import { Pagination } from "../../components/CafeSection/Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    FilterInitialType,
     setCategoryId,
     setFilters,
     setPageCount,
 } from "../../redux/slices/filterslice";
 import QueryString from "qs";
-import { fetchPizzas } from "../../redux/slices/pizzasSlice";
+import { FetchPizzasArgs, fetchPizzas } from "../../redux/slices/pizzasSlice";
+import { RootState, useAppDispatch } from "../../redux/store";
 
 export const breadcrumbsLinks = [
     { path: "/", Name: "Главная" },
@@ -27,20 +29,24 @@ export const breadcrumbsLinks = [
 // export const SearchContext = createContext();
 
 export const CafeChildArena: React.FC = () => {
-    const categoryId = useSelector((state: any) => state.filter.categoryId);
-    const sortType = useSelector(
-        (state: any) => state.filter.sort.sortProperty
+    const categoryId = useSelector(
+        (state: RootState) => state.filter.categoryId
     );
-    const pageCount = useSelector((state: any) => state.filter.pageCount);
-    const { items, status } = useSelector((state: any) => state.pizza);
-    const SearchValue = useSelector((state: any) => state.filter.SearchValue);
+    const sortType = useSelector(
+        (state: RootState) => state.filter.sort.sortProperty
+    );
+    const pageCount = useSelector((state: RootState) => state.filter.pageCount);
+    const { items, status } = useSelector((state: RootState) => state.pizza);
+    const SearchValue = useSelector(
+        (state: RootState) => state.filter.SearchValue
+    );
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
 
-    const onClickCategories = (id: number) => {
+    const onClickCategories = useCallback((id: number) => {
         dispatch(setCategoryId(id));
-    };
+    }, []);
 
     // const [SearchValue, setSearchValue] = useState("");
 
@@ -56,18 +62,20 @@ export const CafeChildArena: React.FC = () => {
 
     useEffect(() => {
         if (window.location.search) {
-            const params = QueryString.parse(
+            const params: any = QueryString.parse(
                 window.location.search.substring(1)
-            );
+            ) as unknown as FilterInitialType;
 
             const sort = sortList.find(
-                (obj) => obj.sortProperty === params.sortProperty
+                (obj) => obj.sortProperty === params.sortType
             );
 
             dispatch(
                 setFilters({
-                    ...params,
-                    sort,
+                    SearchValue: params.SearchValue,
+                    categoryId: params.categoryId,
+                    pageCount: params.pageCount,
+                    sort: sort || sortList[0],
                 })
             );
         }
@@ -77,7 +85,6 @@ export const CafeChildArena: React.FC = () => {
         const category = categoryId > 0 ? `category=${categoryId}` : "";
 
         dispatch(
-            // @ts-ignore
             fetchPizzas({
                 sortType,
                 pageCount,

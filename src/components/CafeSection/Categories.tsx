@@ -1,5 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import { ButtonFilter } from "../ShopSection/ButtonFilter/ButtonFilter";
+import { useWhyDidYouUpdate } from "ahooks";
 
 export const PizzaItems = [
     {
@@ -27,23 +28,27 @@ type CategoriesProps = {
     onClickCategories: (i: number) => void;
 };
 
-export const Categories: React.FC<CategoriesProps> = ({
-    value,
-    onClickCategories,
-}) => {
-    return (
-        <ul className="filter">
-            {PizzaItems.map((filterItem, i) => {
-                return (
-                    <ButtonFilter
-                        key={i}
-                        handleClick={() => onClickCategories(i)}
-                        isActive={value === i}
-                    >
-                        {filterItem.Name}
-                    </ButtonFilter>
-                );
-            })}
-        </ul>
-    );
-};
+export const Categories: React.FC<CategoriesProps> = memo(
+    ({ value, onClickCategories }) => {
+        useWhyDidYouUpdate("Categories", {
+            value,
+            onClickCategories,
+        });
+
+        return (
+            <ul className="filter">
+                {PizzaItems.map((filterItem, i) => {
+                    return (
+                        <ButtonFilter
+                            key={i}
+                            handleClick={() => onClickCategories(i)}
+                            isActive={value === i}
+                        >
+                            {filterItem.Name}
+                        </ButtonFilter>
+                    );
+                })}
+            </ul>
+        );
+    }
+);

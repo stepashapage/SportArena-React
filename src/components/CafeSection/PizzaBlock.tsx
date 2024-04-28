@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addItems } from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
+import { RootState } from "../../redux/store";
 
 type PizzaBlockProps = {
     id: string;
@@ -21,8 +22,8 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
     types,
 }) => {
     const dispatch = useDispatch();
-    const cartItem = useSelector((state: any) =>
-        state.cart.items.find((obj: any) => obj.id === id)
+    const cartItem = useSelector((state: RootState) =>
+        state.cart.items.find((obj) => obj.id === id)
     );
 
     const [ActiveList, setActiveList] = useState(0);
